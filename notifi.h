@@ -26,7 +26,7 @@ static void notifi(const char *p_Uri, const char *p_Format, ...) {
   s_Request.targetId = -1;
 
   // Maximum size to move is destination size - 1 to allow for null terminator
-  if (p_Uri != NULL && strnlen(p_Uri, sizeof(s_Request.iconUri)) + 1 > sizeof(s_Request.iconUri)) {
+  if (p_Uri != NULL && strnlen(p_Uri, sizeof(s_Request.iconUri)) + 1 < sizeof(s_Request.iconUri)) {
     strncpy(s_Request.iconUri, p_Uri, strnlen(p_Uri, sizeof(s_Request.iconUri) - 1));
   } else {
     s_Request.useIconImageUri = 0;
